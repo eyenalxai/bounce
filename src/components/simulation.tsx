@@ -50,7 +50,6 @@ export const Simulation = ({
 		const ctx = canvas.getContext("2d")
 		if (!ctx) return
 
-		// Initialize grid
 		const grid: Color[][] = Array(gridSize)
 			.fill(null)
 			.map(() => Array(gridSize).fill(null as unknown as Color))
@@ -60,7 +59,6 @@ export const Simulation = ({
 			}
 		}
 
-		// Initialize balls
 		const balls: Ball[] = [
 			{
 				x: canvasSize * 0.25,
@@ -137,8 +135,7 @@ export const Simulation = ({
 		function updateBall(ball: Ball) {
 			const opacity = 0.1
 
-			// Add multiple trail points between current and next position
-			const steps = 4 // Number of intermediate points
+			const steps = 4
 			for (let i = 0; i < steps; i++) {
 				ball.trail.unshift({
 					x: ball.x + (ball.dx * i) / steps,
